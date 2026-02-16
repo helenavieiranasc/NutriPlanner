@@ -15,4 +15,4 @@ Sistema de planejamento nutricional automatizado projetado para maximizar a efic
 
 Para entender os requisitos, diagramas e a arquitetura de software utilizada no **NutriPlanner**, acesse o documento oficial:
 
-*   [📘 Plano de Engenharia de Software (Google Docs)](https://docs.google.com)
+*   [📘 Plano de Engenharia de Software (Google Docs)]([https://docs.google.com](https://docs.google.com/document/d/1l-GdPIIDl-W8tGCfsSoiRTonw4uRM11LRHYu2qgVRyY/edit?usp=sharing))
