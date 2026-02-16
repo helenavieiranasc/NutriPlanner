@@ -10,3 +10,9 @@ Sistema de planejamento nutricional automatizado projetado para maximizar a efic
 - [x] **Cálculos Automáticos:** TMB (Taxa Metabólica Basal), gasto diário, macros e micronutrientes.
 - [x] **Base de Dados:** Importação de tabelas de alimentos e valores nutricionais (TACO).
 - [x] **Planos Alimentares:** Criação, visualização e edição de dietas personalizadas.
+
+## 📄 Documentação do Projeto
+
+Para entender os requisitos, diagramas e a arquitetura de software utilizada no **NutriPlanner**, acesse o documento oficial:
+
+*   [📘 Plano de Engenharia de Software (Google Docs)](https://docs.google.com)
