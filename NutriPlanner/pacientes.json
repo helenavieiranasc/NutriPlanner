@@ -1,0 +1,176 @@
+{
+    "12345678910": {
+        "nome": "Helena Vieira",
+        "data_nasc": "30/04/2007",
+        "sexo": "F",
+        "gravidez": "Não",
+        "etnia": "Branca",
+        "profissao": "Estudante",
+        "telefone": "12992196585",
+        "cpf": "12345678910",
+        "email": "hv.nasc@gmail.com",
+        "objetivo": "Manutenção",
+        "doencas": [
+            "Não se aplica"
+        ],
+        "medicamentos": [
+            "Não se aplica"
+        ],
+        "alergias": [
+            "Não se aplica"
+        ],
+        "intolerancias": [
+            "Não se aplica"
+        ],
+        "intestino": "1x ao dia (normal)",
+        "sono": "Excelente (sono reparador)",
+        "peso": 48.0,
+        "altura": 160.0,
+        "medida_cintura": 58.0,
+        "metodo_tmb": "Harris-Benedict (padrão geral)",
+        "atividade_fisica": "Sedentário (não pratica exercícios)",
+        "consumo_agua": "Entre 500 ml e 1 L/dia",
+        "alcool": "Não consome",
+        "meta_1": "Acompanhamento alimentar",
+        "meta_2": "Não se aplica",
+        "meta_3": "Não se aplica",
+        "imc_atual": 18.749999999999996,
+        "classificacao_imc": "Peso saudável",
+        "relacao_ca": 0.3625,
+        "classificacao_ca": "Muito magro",
+        "tmb": 1309.1889999999999,
+        "gasto_total": 1571.0267999999999,
+        "prot_min": 76.80000000000001,
+        "prot_max": 86.4,
+        "prot_kcal_min": 307.20000000000005,
+        "prot_kcal_max": 345.6,
+        "gord_min": 38.400000000000006,
+        "gord_max": 48.0,
+        "gord_kcal_min": 345.6,
+        "gord_kcal_max": 432.0,
+        "carb_min": 157.10268,
+        "carb_max": 216.016185,
+        "carb_kcal_min": 628.41072,
+        "carb_kcal_max": 864.06474,
+        "fibra_min": 25,
+        "fibra_max": 30,
+        "minerais": {
+            "calcio": [
+                1000,
+                2500
+            ],
+            "ferro": [
+                18,
+                45
+            ],
+            "magnesio": [
+                310,
+                350
+            ],
+            "zinco": [
+                8,
+                40
+            ],
+            "cobre": [
+                0.9,
+                10
+            ],
+            "manganes": [
+                1.8,
+                11
+            ],
+            "selenio": [
+                55,
+                400
+            ],
+            "iodo": [
+                150,
+                1100
+            ],
+            "sodio": [
+                500,
+                2300
+            ],
+            "potassio": [
+                2600,
+                null
+            ],
+            "fosforo": [
+                700,
+                4000
+            ]
+        },
+        "vitaminas": {
+            "vitamina_a": [
+                700,
+                3000
+            ],
+            "vitamina_d": [
+                600,
+                4000
+            ],
+            "vitamina_e": [
+                15,
+                1000
+            ],
+            "vitamina_k": [
+                90,
+                null
+            ],
+            "vitamina_c": [
+                75,
+                2000
+            ],
+            "vitamina_b1": [
+                1.1,
+                null
+            ],
+            "vitamina_b2": [
+                1.1,
+                null
+            ],
+            "vitamina_b3": [
+                14,
+                35
+            ],
+            "vitamina_b6": [
+                1.3,
+                100
+            ],
+            "vitamina_b9": [
+                400,
+                1000
+            ],
+            "vitamina_b12": [
+                2.4,
+                null
+            ],
+            "vitamina_b5": [
+                5,
+                null
+            ],
+            "vitamina_b7": [
+                30,
+                null
+            ]
+        },
+        "acidos_graxos": {
+            "omega3_total": [
+                1.1,
+                null
+            ],
+            "epa_dha": [
+                250,
+                500
+            ],
+            "omega6": [
+                12,
+                null
+            ]
+        },
+        "hidratacao_ml": 1680,
+        "hidratacao_litros": 1.68,
+        "alerta_hidratacao": "⚠️ ALERTA: O consumo atual de água está MUITO abaixo do recomendado!",
+        "plano": null
+    }
+}
