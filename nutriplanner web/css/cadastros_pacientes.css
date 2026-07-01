@@ -1,0 +1,254 @@
+@import 'variables.css';
+
+.indicador-etapas {
+    background-color: var(--texto-claro);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    gap: 8px;
+}
+
+.indicador-etapas .nav-link.etapa {
+    flex: 1;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--texto-mutado);
+    white-space: nowrap;
+}
+
+.numero-etapa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background-color: #ECECEC;
+    color: var(--texto-mutado);
+    font-size: 0.7rem;
+}
+
+.indicador-etapas .nav-link.etapa.concluida {
+    background-color: #E7F6E9;
+    color: var(--cor-verde);
+}
+
+.indicador-etapas .nav-link.etapa.concluida .numero-etapa {
+    background-color: var(--cor-verde);
+    color: var(--texto-claro);
+}
+
+.indicador-etapas .nav-link.etapa.atual {
+    background-color: var(--cor-rosa);
+    color: var(--texto-claro);
+}
+
+.indicador-etapas .nav-link.etapa.atual .numero-etapa {
+    background-color: var(--texto-claro);
+    color: var(--cor-rosa);
+}
+
+.cartao-formulario {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cartao-formulario .card-header {
+    background-color: var(--texto-claro);
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--texto-escuro);
+    padding: 1rem 1.5rem;
+}
+
+.cartao-formulario .card-body {
+    padding: 1.5rem;
+}
+
+.form-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--texto-mutado);
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--cor-amarelo);
+    background-color: var(--fundo-creme);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: 0.85rem;
+}
+
+.form-control::placeholder {
+    color: #B8945A;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--cor-amarelo-hover);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.form-control:disabled {
+    background-color: #F0F0F0;
+    color: var(--texto-mutado);
+    cursor: not-allowed;
+}
+
+.form-text {
+    font-size: 0.68rem;
+}
+
+.campo-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--cor-amarelo);
+    background-color: var(--fundo-creme);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.campo-etiquetas input {
+    flex: 1;
+    min-width: 140px;
+    border: none;
+    background: transparent;
+    font-size: 0.85rem;
+}
+
+.campo-etiquetas input:focus {
+    outline: none;
+}
+
+.etiqueta-removivel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--texto-claro);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 6px 4px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.18);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.botao-remover-etiqueta {
+    background: none;
+    color: var(--texto-mutado);
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.botao-remover-etiqueta:hover {
+    color: var(--cor-rosa);
+}
+
+.botao-salvar-paciente {
+    background-color: var(--cor-verde) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    font-size: 0.85rem !important;
+    padding: 8px 16px !important;
+    transition: opacity 0.2s, transform 0.15s !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+.botao-salvar-paciente:hover,
+.botao-salvar-paciente:focus {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    background-color: var(--cor-verde) !important;
+    border-color: transparent !important;
+}
+
+.cartao-exclusoes {
+    border: 2px solid #C0392B;
+    border-radius: 10px;
+    background: rgba(194, 67, 52, 0.24);
+}
+
+.cabecalho-cartao-exclusoes {
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #c44040;
+    border-bottom: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+.bloco-exclusao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(192, 57, 43, 0.2);
+}
+
+.bloco-exclusao:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.bloco-exclusao:first-child {
+    padding-top: 0;
+}
+
+.botao-exclusao {
+    white-space: nowrap;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 2px solid #C0392B;
+    color: #C0392B;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+}
+
+.botao-exclusao:hover {
+    background-color: #C0392B;
+    color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .indicador-etapas {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .indicador-etapas::-webkit-scrollbar {
+        display: none;
+    }
+    .indicador-etapas .etapa {
+        flex-shrink: 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .bloco-exclusao {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .botao-exclusao {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,423 @@
+@import 'variables.css';
+
+.grade-pacientes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+.cartao-paciente {
+    background-color: var(--texto-claro);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-top: 4px solid var(--cor-rosa);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cartao-paciente:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cartao-paciente.cor-laranja {
+    border-top-color: var(--cor-laranja);
+}
+
+.cartao-paciente.cor-verde {
+    border-top-color: var(--cor-verde);
+}
+
+.cartao-paciente.cor-roxo {
+    border-top-color: #7C5CBF;
+}
+
+.cartao-paciente.cor-amarelo {
+    border-top-color: var(--cor-amarelo);
+}
+
+.cartao-paciente.cor-ciano {
+    border-top-color: #2E8B8B;
+}
+
+.cabecalho-cartao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.info-paciente-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.avatar-paciente {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--texto-claro);
+    flex-shrink: 0;
+}
+
+.avatar-rosa {
+    background: linear-gradient(135deg, var(--cor-rosa));
+}
+
+.avatar-laranja {
+    background: linear-gradient(135deg, var(--cor-laranja));
+}
+
+.avatar-verde {
+    background: linear-gradient(135deg, var(--cor-verde));
+}
+
+.avatar-roxo {
+    background: linear-gradient(135deg, #7C5CBF);
+}
+
+.avatar-amarelo {
+    background: linear-gradient(135deg, var(--cor-amarelo));
+}
+
+.avatar-ciano {
+    background: linear-gradient(135deg, #2E8B8B);
+}
+
+.dados-paciente-cabecalho {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nome-paciente {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--texto-escuro);
+}
+
+.email-paciente {
+    font-size: 0.75rem;
+    color: var(--texto-mutado);
+}
+
+.etiqueta-objetivo-cartao {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.objetivo-manutencao {
+    background-color: rgba(243, 104, 10, 0.23);
+    color: var(--cor-laranja);
+}
+
+.objetivo-hipertrofia {
+    background-color: #fce7f3;
+    color: var(--cor-rosa);
+}
+
+.objetivo-emagrecimento {
+    background-color: #dcfce7;
+    color: var(--cor-verde);
+}
+
+.metricas-paciente {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.metrica {
+    background-color: var(--fundo-pagina);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.valor-metrica {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--texto-escuro);
+}
+
+.rotulo-metrica {
+    font-size: 0.7rem;
+    color: var(--texto-mutado);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rodape-cartao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.status-plano {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.status-ativo-cartao {
+    background-color: #fce7f3;
+    color: var(--cor-rosa);
+}
+
+.status-sem-plano-cartao {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.acoes-cartao {
+    display: flex;
+    gap: 8px;
+}
+
+.botao-cartao {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--texto-claro);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.botao-ver {
+    background-color: var(--texto-mutado);
+}
+
+.botao-plano {
+    background-color: var(--cor-rosa);
+}
+
+.botao-cartao:hover {
+    opacity: 0.85;
+}
+
+.container-filtros {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.botao-filtro {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--texto-claro);
+    color: var(--texto-escuro);
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.botao-filtro.ativo {
+    background-color: var(--cor-rosa);
+    color: var(--texto-claro);
+}
+
+.botao-filtro:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.container-buscador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.input-busca {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 25px;
+    border: 1px solid #E8E8E8;
+    background-color: #FFFFFF;
+    font-size: 0.9rem;
+    color: var(--texto-escuro);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+}
+
+.input-busca::placeholder {
+    color: var(--texto-mutado);
+}
+
+.input-busca:focus {
+    outline: none;
+    border-color: #ffbf00;
+    box-shadow: 0 4px 8px 0 rgba(240, 179, 0, 0.2);
+}
+
+.botao-alternar-visualizacao {
+    display: flex;
+    gap: 4px;
+    background-color: var(--texto-claro);
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.botao-alternar {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.botao-alternar.ativo {
+    background-color: #f0f0f0;
+}
+
+.secao-pacientes-grade {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+@media (max-width: 1024px) {
+    .grade-pacientes {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho-secao {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .container-filtros {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .container-filtros::-webkit-scrollbar {
+        display: none;
+    }
+
+    .container-filtros .botao-filtro,
+    .container-filtros .btn-ordem {
+        flex-shrink: 0;
+    }
+
+    .container-buscador {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .input-busca {
+        width: 100%;
+    }
+}
+
+#tabelaListaWrap {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    #tabelaListaWrap {
+        overflow-x: auto;
+    }
+    .tabela-lista-pacientes {
+        min-width: 600px;
+    }
+}
+
+.tabela-lista-pacientes {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-lista-pacientes thead th {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--texto-mutado);
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: uppercase;
+}
+
+.tabela-lista-pacientes tbody tr {
+    border-bottom: 1px solid #f7f7f7;
+    transition: background 0.15s;
+}
+
+.tabela-lista-pacientes tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tabela-lista-pacientes tbody tr:hover {
+    background: #fafafa;
+}
+
+.tabela-lista-pacientes tbody td {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    vertical-align: middle;
+}
+
+.lista-perfil {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lista-dados strong {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--texto-escuro);
+    display: block;
+}
+
+.lista-dados span {
+    font-size: 0.72rem;
+    color: var(--texto-mutado);
+}

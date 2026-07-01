@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlanner</title>
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-xl bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../imagens/logo.png" alt="Logo" width="100" height="100"
+                        class="d-inline-block align-text-top">
+                    NutriPlanner
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#pagina2">Como Funciona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pagina3">Funcionalidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pagina4">Base TACO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-secondary btn-sm ms-2" href="#pagina2">Conheça o
+                                sistema</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="pagina1" class="secao-inicio">
+        <section class="bloco-inicio">
+            <h1 class="titulo-principal">
+                Planejamento nutricional
+                <br>
+                <span class="destaque-laranja">eficiente</span> e
+                <span class="destaque-rosa">automático</span>
+            </h1>
+            <p class="descricao-principal">
+                Centralize a gestão de pacientes e a criação de planos alimentares personalizados, automatizando
+                cálculos antropométricos complexos e tarefas administrativas.
+            </p>
+            <button class="botao-inicio">
+                <a class="link-inicio" href="#cartao-login">Começar agora &rarr;</a>
+            </button>
+        </section>
+        <div class="cartao-login" id="cartao-login">
+            <div class="container-abas">
+                <button class="aba-btn ativa" id="btn-entrar">Entrar</button>
+                <button class="aba-btn inativa" id="btn-criar">Criar conta</button>
+            </div>
+
+            <div class="form-container-wrapper">
+                <div class="forms-slider">
+
+                    <div class="form-box">
+                        <h2 class="titulo-login">Entre na sua conta</h2>
+                        <form id="form-login">
+                            <div class="input-group">
+                                <label>EMAIL</label>
+                                <input type="email" id="login-email" placeholder="Digite seu email" required>
+                            </div>
+                            <div class="input-group">
+                                <label>SENHA</label>
+                                <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+                            </div>
+                            <button type="submit" class="botao-enviar">Entrar no sistema</button>
+                        </form>
+                    </div>
+
+                    <div class="form-box">
+                        <h2 class="titulo-login">Crie sua conta</h2>
+                        <form id="form-cadastro">
+                            <div class="input-group">
+                                <label>NOME</label>
+                                <input type="text" id="cadastro-nome" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="input-group">
+                                <label>EMAIL</label>
+                                <input type="email" id="cadastro-email" placeholder="Digite seu email" required>
+                            </div>
+                            <div class="input-group">
+                                <label>SENHA</label>
+                                <input type="password" id="cadastro-senha" placeholder="Mínimo 8 caracteres" required minlength="8">
+                            </div>
+                            <button type="submit" class="botao-enviar">Criar conta</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pagina2" class="secao-passos">
+        <h1>Do cadastro ao plano em 4 passos:</h1>
+
+        <div class="container-passos">
+            <div class="lista-passos">
+
+                <div class="item-passo">
+                    <div class="numero-passo numero-amarelo">01</div>
+                    <div class="conteudo-passo">
+                        <h2>Cadastre o paciente</h2>
+                        <p>Preencha a anamnese completa com dados clínicos, hábitos, alergias, objetivos e metas.</p>
+                    </div>
+                </div>
+
+                <div class="item-passo">
+                    <div class="numero-passo numero-laranja">02</div>
+                    <div class="conteudo-passo">
+                        <h2>Cálculos são gerados</h2>
+                        <p>IMC, relação cintura/altura, TMB, gasto total e metas de macro e micronutrientes calculados
+                            automaticamente.</p>
+                    </div>
+                </div>
+
+                <div class="item-passo">
+                    <div class="numero-passo numero-rosa">03</div>
+                    <div class="conteudo-passo">
+                        <h2>Monte o plano</h2>
+                        <p>Pesquise alimentos na base TACO, defina quantidades e distribua para todas refeições do dia.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="item-passo">
+                    <div class="numero-passo numero-verde">04</div>
+                    <div class="conteudo-passo">
+                        <h2>Salve e acompanhe</h2>
+                        <p>Plano salvo ao paciente com resumo nutricional completo, comparativo de metas e observações
+                            clínicas.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="painel-previa">
+                <img src="../imagens/preview paciente.png" alt="Preview perfil do paciente">
+            </div>
+        </div>
+    </section>
+
+    <section id="pagina3" class="secao-funcionalidades">
+        <h1>Tudo que um nutricionista precisa num só lugar</h1>
+
+        <div class="grade-cartoes">
+
+            <div class="cartao-funcionalidade cartao-amarelo">
+                <h2>Gestão de Pacientes</h2>
+                <p>Cadastro completo com anamnese, alergias, medicamentos, hábitos de sono, objetivos e metas.</p>
+            </div>
+
+            <div class="cartao-funcionalidade cartao-laranja">
+                <h2>Cálculos Automáticos</h2>
+                <p>Obtenha resultados precisos de TMB, gasto energético diário e a divisão ideal de macronutrientes e
+                    micronutrientes.</p>
+            </div>
+
+            <div class="cartao-funcionalidade cartao-rosa">
+                <h2>Tabela TACO integrada</h2>
+                <p>Acesso rápido e integrado à base de dados TACO, com informações e valores nutricionais completos dos
+                    alimentos.</p>
+            </div>
+
+            <div class="cartao-funcionalidade cartao-verde">
+                <h2>Planos Personalizados</h2>
+                <p>Crie, visualize e edite planos alimentares 100% personalizados de forma ágil, adaptando a dieta às
+                    necessidades e objetivos de cada paciente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-metodos">
+        <h1>Você escolhe o método ideal para cada paciente</h1>
+
+        <div class="grade-metodos">
+            <div class="cartao-metodo">
+                <span class="etiqueta-metodo">TMB</span>
+                <h2>Harris-Benedict</h2>
+                <p>Indicado para pacientes com perfil geral. O sistema realiza o cálculo com base nos dados fornecidos
+                    pelo usuário, considerando minuciosamente as variáveis essenciais de sexo, peso, altura e idade do
+                    indivíduo.</p>
+            </div>
+
+            <div class="cartao-metodo">
+                <span class="etiqueta-metodo">TMB</span>
+                <h2>Mifflin-St Jeor</h2>
+                <p>Indicado principalmente para pacientes com sobrepeso. Esta equação garante maior precisão no cálculo
+                    do gasto energético, devendo ser selecionada com base nos dados clínicos detalhados e coletados
+                    durante a anamnese.</p>
+            </div>
+
+            <div class="cartao-metodo">
+                <span class="etiqueta-metodo">Gasto Calórico</span>
+                <h2>Fator de atividade física</h2>
+                <p>Ajusta o gasto total ao nível de atividade física real do paciente (de sedentário a muito ativo) com
+                    fator de multiplicação preciso.</p>
+            </div>
+
+            <div class="cartao-metodo">
+                <span class="etiqueta-metodo">Composição</span>
+                <h2>Macros e micros</h2>
+                <p>Distribuição calculada com base no objetivo (emagrecimento, manutenção ou hipertrofia) e perfil
+                    individual do paciente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pagina4" class="secao-taco">
+        <div class="cabecalho-taco">
+            <h1>Base de dados <span>TACO</span> integrada</h1>
+            <p>Esqueça consultas manuais, o NutriPlanner traz a base oficial brasileira de alimentos diretamente para o
+                seu fluxo de trabalho, garantindo prescrições rápidas e exatas.</p>
+        </div>
+
+        <div class="grade-taco">
+
+            <div class="cartao-taco">
+                <div class="icone-cartao">
+                    <img src="../imagens/busca.png" alt="">
+                </div>
+                <h2>Busca Oficial e Ágil</h2>
+                <p>Acesso instantâneo à base completa para buscar alimentos por nome e integrá-los diretamente às
+                    refeições planejadas.</p>
+            </div>
+
+            <div class="cartao-taco">
+                <div class="icone-cartao">
+                    <img src="../imagens/calculo.png" alt="">
+                </div>
+                <h2>Cálculo em Tempo Real</h2>
+                <p>O sistema calcula o valor nutricional total (calorias, macros e micros) de cada refeição e, em
+                    seguida, o total diário da dieta criada.</p>
+            </div>
+
+            <div class="cartao-taco">
+                <div class="icone-cartao">
+                    <img src="../imagens/relogio.png" alt="">
+                </div>
+                <h2>Maior Produtividade</h2>
+                <p>Interface intuitiva focada na agilidade, permitindo que o profissional consiga estruturar um plano
+                    alimentar em até 10 minutos.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="container-rodape">
+
+        <section class="container-chamada">
+            <h2 class="titulo-chamada">Pronto para começar?</h2>
+            <p class="descricao-chamada">
+                Mais tempo para cuidar e menos para calcular! Crie uma conta no NutriPlanner e transforme seus
+                atendimentos.
+            </p>
+            <div class="botoes-chamada">
+                <a href="#pagina1" id="btn-chamada-criar" class="botao-chamada botao-escuro">Criar uma conta &rarr;</a>
+                <a href="#pagina2" class="botao-chamada botao-claro">Rever as funcionalidades</a>
+            </div>
+        </section>
+
+        <footer class="rodape-principal">
+            <div class="conteudo-rodape">
+
+                <div class="marca-rodape">
+                    <div class="logo-rodape">
+                        <img src="../imagens/logo.png" alt="Logo NutriPlanner">
+                    </div>
+                    <p>NutriPlanner, mais tempo para cuidar e menos para calcular! Sistema para gestão de pacientes e
+                        criação de planos alimentares personalizados.</p>
+                </div>
+
+                <div class="links-rodape">
+                    <a href="#pagina2">Conheça o sistema</a>
+                    <a href="#pagina1" id="btn-rodape-criar">Criar uma conta</a>
+                    <a href="https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/arquivos-antigos/ppsi/guia_termo_uso_politica_privacidade.pdf" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
+                    <a href="https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/arquivos-antigos/ppsi/guia_termo_uso_politica_privacidade.pdf" target="_blank" rel="noopener noreferrer">Termos de Uso</a>
+                    <a href="https://github.com/helenavieiranasc/NutriPlanner.git" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="mailto:nutriplanner@gmail.com">nutriplanner@gmail.com</a>
+                </div>
+
+            </div>
+
+            <div class="rodape-inferior">
+                <p>&copy; 2026 NutriPlanner - São José dos Campos/SP</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const cartaoLogin = document.getElementById('cartao-login');
+        const btnEntrar = document.getElementById('btn-entrar');
+        const btnCriar = document.getElementById('btn-criar');
+        const btnChamadaCriar = document.getElementById('btn-chamada-criar');
+        const btnRodapeCriar = document.getElementById('btn-rodape-criar');
+
+        const mostrarCadastro = () => {
+            cartaoLogin.classList.add('active-cadastro');
+            btnCriar.classList.replace('inativa', 'ativa');
+            btnEntrar.classList.replace('ativa', 'inativa');
+        };
+
+        const mostrarLogin = () => {
+            cartaoLogin.classList.remove('active-cadastro');
+            btnEntrar.classList.replace('inativa', 'ativa');
+            btnCriar.classList.replace('ativa', 'inativa');
+        };
+
+        btnCriar.addEventListener('click', mostrarCadastro);
+        btnEntrar.addEventListener('click', mostrarLogin);
+
+        if (btnChamadaCriar) {
+            btnChamadaCriar.addEventListener('click', mostrarCadastro);
+        }
+        if (btnRodapeCriar) {
+            btnRodapeCriar.addEventListener('click', mostrarCadastro);
+        }
+
+        const getUsuarios = () => {
+            const users = localStorage.getItem('nutriplanner_users');
+            return users ? JSON.parse(users) : [];
+        };
+
+        const setUsuarios = (users) => {
+            localStorage.setItem('nutriplanner_users', JSON.stringify(users));
+        };
+
+        const inicializarUsuarios = () => {
+            const users = getUsuarios();
+            if (users.length === 0) {
+                users.push({
+                    nome: 'Beatriz Pastor',
+                    email: 'beatriz@nutriplanner.com',
+                    senha: '12345678'
+                });
+                setUsuarios(users);
+            }
+        };
+
+        inicializarUsuarios();
+
+        document.getElementById('form-login').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('login-email').value.trim().toLowerCase();
+            const senhaInput = document.getElementById('login-senha').value;
+
+            const users = getUsuarios();
+            const usuarioValido = users.find(u => u.email === emailInput && u.senha === senhaInput);
+
+            if (usuarioValido) {
+                localStorage.setItem('nutriplanner_current_user', JSON.stringify(usuarioValido));
+                window.location.href = 'home.html';
+            } else {
+                alert('E-mail ou senha incorretos!');
+            }
+        });
+
+        document.getElementById('form-cadastro').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nomeInput = document.getElementById('cadastro-nome').value.trim();
+            const emailInput = document.getElementById('cadastro-email').value.trim().toLowerCase();
+            const senhaInput = document.getElementById('cadastro-senha').value;
+
+            const users = getUsuarios();
+            const usuarioExistente = users.find(u => u.email === emailInput);
+
+            if (usuarioExistente) {
+                alert('Este e-mail já está cadastrado no sistema!');
+                return;
+            }
+
+            const novoUsuario = {
+                nome: nomeInput,
+                email: emailInput,
+                senha: senhaInput
+            };
+
+            users.push(novoUsuario);
+            setUsuarios(users);
+
+            localStorage.setItem('nutriplanner_current_user', JSON.stringify(novoUsuario));
+            alert('Conta criada com sucesso! Redirecionando...');
+            window.location.href = 'home.html';
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

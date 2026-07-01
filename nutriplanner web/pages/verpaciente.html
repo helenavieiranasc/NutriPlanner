@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlanner – Helena Vieira</title>
+    <meta name="description" content="Visualização completa do prontuário, anamnese e plano alimentar da paciente Helena Vieira.">
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/criar_plano.css">
+    <link rel="stylesheet" href="../css/ver_paciente.css">
+</head>
+
+<body>
+
+    <div id="containersidebar"></div>
+
+    <main class="conteudo-dashboard">
+
+        <header class="cabecalho-dashboard">
+            <button class="botao-toggle-sidebar" id="toggleSidebar">☰</button>
+            <div class="bloco-boas-vindas">
+                <h1>Helena <span class="destaque-nome">Vieira</span></h1>
+            </div>
+            <div class="acoes-cabecalho d-flex align-items-center gap-2">
+                <a href="editarpaciente.html" class="btn botao-editar-perfil">✏️ Editar</a>
+                <a href="criarplano.html"     class="btn botao-criar-plano-perfil">📄 Criar Plano</a>
+                <button class="btn botao-excluir-perfil" id="btnExcluirPaciente">🗑️ Excluir</button>
+            </div>
+        </header>
+
+        <section class="secao-perfil-completo mb-4">
+
+            <div class="cartao-perfil-lateral">
+                <div class="avatar-perfil-lateral">HV</div>
+                <h2 class="nome-perfil-lateral">Helena Vieira</h2>
+                <p class="sub-perfil-lateral">
+                    30/04/2007 · 19 anos<br>
+                    Paciente Ativo
+                </p>
+                <div class="grupo-tags-perfil">
+                    <span class="etiqueta-perfil-lateral etiqueta-objetivo">Manutenção</span>
+                    <span class="etiqueta-perfil-lateral">Feminino</span>
+                    <span class="etiqueta-perfil-lateral">Não gestante</span>
+                </div>
+                <div class="detalhes-perfil-lateral">
+                    <div class="item-detalhe-lateral">
+                        <strong>CPF</strong>
+                        123.456.789-00
+                    </div>
+                    <div class="item-detalhe-lateral">
+                        <strong>E-MAIL</strong>
+                        helena.vieira@gmail.com
+                    </div>
+                    <div class="item-detalhe-lateral">
+                        <strong>TELEFONE</strong>
+                        (12) 99219-6585
+                    </div>
+                    <div class="item-detalhe-lateral">
+                        <strong>PROFISSÃO</strong>
+                        Estudante
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-anamnese-perfil">
+                <div class="titulo-secao-anamnese">Anamnese</div>
+                <div class="grade-dados-anamnese">
+
+                    <div class="item-dado-anamnese">
+                        <label>Objetivo</label>
+                        <span>Manutenção</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Metas</label>
+                        <span>Acompanhamento nutricional</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Peso</label>
+                        <span>48,0 kg</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Altura</label>
+                        <span>157 cm</span>
+                    </div>
+
+                    <div class="item-dado-anamnese">
+                        <label>Sono</label>
+                        <span>Excelente (dorme rápido)</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Funcionamento Intestinal</label>
+                        <span>1x ao dia (normal)</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Consumo de Água</label>
+                        <span>500 ml – 1 L/dia</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Consumo de Álcool</label>
+                        <span>Não consome</span>
+                    </div>
+
+                    <div class="item-dado-anamnese">
+                        <label>Cintura</label>
+                        <span>60 cm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Método TMB</label>
+                        <span>Harris-Benedict</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>TMB</label>
+                        <span>
+                            1289 kcal
+                            <span class="etiqueta-inline etiqueta-inline-laranja">NORMAL</span>
+                        </span>
+                        <div class="progresso-pequeno">
+                            <div class="barra-progresso-pequeno cor-laranja bar-tmb"></div>
+                        </div>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>IMC</label>
+                        <span>
+                            19,5
+                            <span class="etiqueta-inline etiqueta-inline-verde">SAUDÁVEL</span>
+                        </span>
+                        <div class="progresso-pequeno">
+                            <div class="barra-progresso-pequeno cor-verde bar-imc"></div>
+                        </div>
+                    </div>
+
+                    <div class="item-dado-anamnese">
+                        <label>Doenças</label>
+                        <span><span class="etiqueta-status-anamnese etiqueta-amarela">Não se aplica</span></span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Medicamentos</label>
+                        <span><span class="etiqueta-status-anamnese etiqueta-amarela">Não se aplica</span></span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Alergias</label>
+                        <span><span class="etiqueta-status-anamnese etiqueta-amarela">Não se aplica</span></span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Intolerâncias</label>
+                        <span><span class="etiqueta-status-anamnese etiqueta-amarela">Não se aplica</span></span>
+                    </div>
+
+                    <div class="item-dado-anamnese item-largura-total">
+                        <label>Relação Cintura-Altura</label>
+                        <div class="valor-largura-total">
+                            <span>
+                                0,38
+                                <span class="etiqueta-inline etiqueta-inline-verde">SAUDÁVEL</span>
+                            </span>
+                            <div class="progresso-pequeno">
+                                <div class="barra-progresso-pequeno cor-laranja bar-rca"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="titulo-secao-anamnese mt-4">Avaliação Antropométrica — Dobras &amp; Composição</div>
+                <div class="grade-dados-anamnese">
+                    <div class="item-dado-anamnese">
+                        <label>Peitoral</label>
+                        <span>8 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Axilar Média</label>
+                        <span>9 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Tríceps</label>
+                        <span>14 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Subescapular</label>
+                        <span>10 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Abdômen</label>
+                        <span>16 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Suprailíaca</label>
+                        <span>11 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Coxa</label>
+                        <span>18 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Soma das 7 Dobras</label>
+                        <span>86 mm</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Densidade Corporal</label>
+                        <span>1,0583 g/cm³</span>
+                    </div>
+                    <div class="item-dado-anamnese">
+                        <label>Percentual de Gordura</label>
+                        <span>
+                            17,7%
+                            <span class="etiqueta-inline etiqueta-inline-verde">SAUDÁVEL</span>
+                        </span>
+                        <div class="progresso-pequeno">
+                            <div class="barra-progresso-pequeno cor-verde bar-gordura"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="card cartao-necessidades-nutricionais mb-4">
+            <div class="titulo-secao-anamnese">Necessidades nutricionais</div>
+
+            <div class="layout-necessidades">
+                <div class="d-flex flex-column gap-3">
+                    <div class="etiqueta-meta-necessidade">
+                        <div class="valor-meta-nutricional">1.571</div>
+                        <span class="descricao-meta-nutricional">kcal/dia — meta total</span>
+                    </div>
+                    <div class="etiqueta-meta-necessidade meta-agua">
+                        <div class="valor-meta-nutricional">1,68</div>
+                        <span class="descricao-meta-nutricional">L/dia — hidratação recomendada</span>
+                    </div>
+                </div>
+
+                <div class="grade-barras-macros">
+                    <div class="barra-macro-item">
+                        <label>Proteína</label>
+                        <div class="envoltorio-barra-progresso">
+                            <div class="preenchimento-barra-progresso fill-prot"></div>
+                        </div>
+                        <span class="intervalo-valor-macro">77 – 82 g/dia</span>
+                    </div>
+                    <div class="barra-macro-item">
+                        <label>Carboidrato</label>
+                        <div class="envoltorio-barra-progresso">
+                            <div class="preenchimento-barra-progresso fill-carb"></div>
+                        </div>
+                        <span class="intervalo-valor-macro">187 – 211 g/dia</span>
+                    </div>
+                    <div class="barra-macro-item">
+                        <label>Lipídeos</label>
+                        <div class="envoltorio-barra-progresso">
+                            <div class="preenchimento-barra-progresso fill-lip"></div>
+                        </div>
+                        <span class="intervalo-valor-macro">36 – 43 g/dia</span>
+                    </div>
+                    <div class="barra-macro-item">
+                        <label>Fibras</label>
+                        <div class="envoltorio-barra-progresso">
+                            <div class="preenchimento-barra-progresso fill-fib"></div>
+                        </div>
+                        <span class="intervalo-valor-macro">25 – 32 g/dia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alerta-necessidade-consumo">
+                ⚠️ O consumo atual relatado (500 ml – 1 L/dia) está <strong>muito abaixo do recomendado</strong>.
+            </div>
+        </section>
+
+        <section class="card cartao-evolucao-perfil mb-4">
+            <div class="titulo-secao-anamnese">Evolução</div>
+
+            <div class="layout-evolucao">
+                <div class="bloco-metrica-reducao">
+                    <div class="metrica-reducao-box">
+                        <strong>Peso (kg)</strong>
+                        <span>↓ -3 kg desde o início</span>
+                    </div>
+                    <div class="metrica-reducao-box">
+                        <strong>Circunferência da cintura (cm)</strong>
+                        <span>↓ -3 cm desde o início</span>
+                    </div>
+                    <div class="mini-lista-valores-evolucao">
+                        <div class="mini-lista-item">
+                            <span>Proteína</span>
+                            <span>77 – 82 g</span>
+                        </div>
+                        <div class="mini-lista-item">
+                            <span>Carboidrato</span>
+                            <span>187 – 211 g</span>
+                        </div>
+                        <div class="mini-lista-item">
+                            <span>Lipídeos</span>
+                            <span>36 – 43 g</span>
+                        </div>
+                        <div class="mini-lista-item">
+                            <span>Fibras</span>
+                            <span>25 – 32 g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cartao-grafico">
+                    <h3>Peso ao longo do tempo (Kg)</h3>
+                    <img src="../imagens/Peso_ao_longo_do_tempo.png" alt="Gráfico de peso ao longo do tempo">
+                </div>
+
+                <div class="cartao-grafico">
+                    <h3>Adequação calórica (%)</h3>
+                    <img src="../imagens/Adequação_calórica.png" alt="Gráfico de adequação calórica">
+                </div>
+            </div>
+        </section>
+
+        <section class="card cartao-lista-alimentos mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="titulo-secao-plano">Plano nutricional</h2>
+                <button class="btn botao-salvar-pdf" id="btnSalvarPdf">Salvar PDF</button>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="etiqueta-total-macro">
+                        <div class="valor-macro">1.571</div>
+                        <div class="nome-macro">kcal totais</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="etiqueta-total-macro macro-prot">
+                        <div class="valor-macro">82g</div>
+                        <div class="nome-macro">proteína</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="etiqueta-total-macro macro-carb">
+                        <div class="valor-macro">187g</div>
+                        <div class="nome-macro">carboidrato</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="etiqueta-total-macro macro-lip">
+                        <div class="valor-macro">43g</div>
+                        <div class="nome-macro">lipídeos</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="etiqueta-total-macro macro-fib">
+                        <div class="valor-macro">30g</div>
+                        <div class="nome-macro">fibras</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3" id="planoAlimentarContainer">
+
+                <div class="grupo-refeicao">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">☕ Café da manhã</span>
+                        <span class="kcal-total-refeicao">280 kcal</span>
+                    </div>
+                    <div class="tabela-scroll">
+                        <table class="table tabela-alimentos-adicionados">
+                            <tbody>
+                                <tr>
+                                    <td class="nome-alimento">Aveia em flocos, crua</td>
+                                    <td class="quantidade-alimento">40g</td>
+                                    <td class="kcal-alimento">153 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Banana, prata, crua</td>
+                                    <td class="quantidade-alimento">1 unidade (80g)</td>
+                                    <td class="kcal-alimento">78 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Leite de vaca, integral</td>
+                                    <td class="quantidade-alimento">200 ml</td>
+                                    <td class="kcal-alimento">122 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grupo-refeicao">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">🥪 Lanche da manhã</span>
+                        <span class="kcal-total-refeicao">56 kcal</span>
+                    </div>
+                    <div class="tabela-scroll">
+                        <table class="table tabela-alimentos-adicionados">
+                            <tbody>
+                                <tr>
+                                    <td class="nome-alimento">Maçã, gala, com casca</td>
+                                    <td class="quantidade-alimento">1 unidade (100g)</td>
+                                    <td class="kcal-alimento">56 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grupo-refeicao">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">🍲 Almoço</span>
+                        <span class="kcal-total-refeicao">460 kcal</span>
+                    </div>
+                    <div class="tabela-scroll">
+                        <table class="table tabela-alimentos-adicionados">
+                            <tbody>
+                                <tr>
+                                    <td class="nome-alimento">Arroz, integral, cozido</td>
+                                    <td class="quantidade-alimento">150g</td>
+                                    <td class="kcal-alimento">186 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Feijão, carioca, cozido</td>
+                                    <td class="quantidade-alimento">100g</td>
+                                    <td class="kcal-alimento">76 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Peito de frango, grelhado</td>
+                                    <td class="quantidade-alimento">120g</td>
+                                    <td class="kcal-alimento">198 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grupo-refeicao">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">🥪 Lanche da tarde</span>
+                        <span class="kcal-total-refeicao">280 kcal</span>
+                    </div>
+                    <div class="tabela-scroll">
+                        <table class="table tabela-alimentos-adicionados">
+                            <tbody>
+                                <tr>
+                                    <td class="nome-alimento">Aveia em flocos, crua</td>
+                                    <td class="quantidade-alimento">40g</td>
+                                    <td class="kcal-alimento">153 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Banana, prata, crua</td>
+                                    <td class="quantidade-alimento">1 unidade (80g)</td>
+                                    <td class="kcal-alimento">78 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                                <tr>
+                                    <td class="nome-alimento">Leite de vaca, integral</td>
+                                    <td class="quantidade-alimento">200 ml</td>
+                                    <td class="kcal-alimento">122 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grupo-refeicao">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">🥗 Jantar</span>
+                        <span class="kcal-total-refeicao">20 kcal</span>
+                    </div>
+                    <div class="tabela-scroll">
+                        <table class="table tabela-alimentos-adicionados">
+                            <tbody>
+                                <tr>
+                                    <td class="nome-alimento">Salada de alface e tomate</td>
+                                    <td class="quantidade-alimento">100g</td>
+                                    <td class="kcal-alimento">20 kcal</td>
+                                    <td class="acao-remover-alimento"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grupo-refeicao sem-itens">
+                    <div class="cabecalho-refeicao">
+                        <span class="titulo-refeicao">🥛 Ceia</span>
+                        <span class="status-sem-itens">Sem alimentos</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+    <script>
+        if (!localStorage.getItem('nutriplanner_current_user')) {
+            window.location.href = 'index.html';
+        }
+        const pNomeExcluir = localStorage.getItem('nutriplanner_selected_patient_name') || 'Helena Vieira';
+
+        const calcularIdade = (dataNascStr) => {
+            if (!dataNascStr) return 19;
+            const parts = dataNascStr.split('/');
+            if (parts.length !== 3) return 19;
+            const nasc = new Date(parts[2], parts[1] - 1, parts[0]);
+            const hoje = new Date();
+            let idade = hoje.getFullYear() - nasc.getFullYear();
+            const m = hoje.getMonth() - nasc.getMonth();
+            if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) {
+                idade--;
+            }
+            return Math.max(0, idade);
+        };
+
+        const carregarPacienteAtual = () => {
+            const pacientes = JSON.parse(localStorage.getItem('nutriplanner_pacientes')) || [];
+            let paciente = pacientes.find(item => item.nome.toLowerCase() === pNomeExcluir.toLowerCase());
+
+            if (!paciente) {
+                const mocks = {
+                    'helena vieira': {
+                        nome: 'Helena Vieira',
+                        data_nasc: '30/04/2007',
+                        profissao: 'Estudante',
+                        sexo: 'F',
+                        gravidez: 'Não',
+                        telefone: '(12) 99219-6585',
+                        email: 'helena.vieira@gmail.com',
+                        cpf: '123.456.789-00',
+                        etnia: 'Branca',
+                        objetivo: 'Manutenção',
+                        meta_1: 'Acompanhamento nutricional',
+                        peso: 48,
+                        altura: 157,
+                        medida_cintura: 60,
+                        metodo_tmb: 'Harris-Benedict',
+                        kcal: 1289,
+                        imc: 19.5,
+                        doencas: [],
+                        medicamentos: [],
+                        alergias: [],
+                        intolerancias: [],
+                        peitoral: 8, axilar_media: 9, triceps: 14, subescapular: 10, abdomen: 16, suprailiaca: 11, coxa: 18,
+                        consumo_agua: '500 ml – 1 L/dia'
+                    },
+                    'maria clara pastor': {
+                        nome: 'Maria Clara Pastor',
+                        data_nasc: '12/08/1995',
+                        profissao: 'Advogada',
+                        sexo: 'F',
+                        gravidez: 'Não',
+                        telefone: '(11) 98888-7777',
+                        email: 'maria@gmail.com',
+                        cpf: '234.567.890-11',
+                        etnia: 'Parda',
+                        objetivo: 'Hipertrofia',
+                        meta_1: 'Ganho de massa magra',
+                        peso: 62,
+                        altura: 168,
+                        medida_cintura: 70,
+                        metodo_tmb: 'Harris-Benedict',
+                        kcal: 1420,
+                        imc: 22.0,
+                        doencas: [],
+                        medicamentos: [],
+                        alergias: [],
+                        intolerancias: [],
+                        peitoral: 10, axilar_media: 12, triceps: 16, subescapular: 14, abdomen: 20, suprailiaca: 15, coxa: 22,
+                        consumo_agua: '2 L/dia'
+                    },
+                    'camila ribeiro': {
+                        nome: 'Camila Ribeiro',
+                        data_nasc: '04/11/1988',
+                        profissao: 'Arquiteta',
+                        sexo: 'F',
+                        gravidez: 'Não',
+                        telefone: '(21) 97777-6666',
+                        email: 'camila@gmail.com',
+                        cpf: '345.678.901-22',
+                        etnia: 'Branca',
+                        objetivo: 'Emagrecimento',
+                        meta_1: 'Redução de percentual de gordura',
+                        peso: 75,
+                        altura: 162,
+                        medida_cintura: 85,
+                        metodo_tmb: 'Harris-Benedict',
+                        kcal: 1480,
+                        imc: 28.6,
+                        doencas: [],
+                        medicamentos: [],
+                        alergias: [],
+                        intolerancias: [],
+                        peitoral: 18, axilar_media: 22, triceps: 24, subescapular: 26, abdomen: 32, suprailiaca: 28, coxa: 34,
+                        consumo_agua: '1.5 L/dia'
+                    }
+                };
+
+                paciente = mocks[pNomeExcluir.toLowerCase()] || mocks['helena vieira'];
+            }
+
+            return paciente;
+        };
+
+        const p = carregarPacienteAtual();
+
+        document.title = `NutriPlanner - ${p.nome}`;
+        
+        const mainH1 = document.querySelector('.cabecalho-dashboard h1');
+        if (mainH1) {
+            const words = p.nome.split(' ');
+            const firstName = words[0];
+            const lastName = words.slice(1).join(' ');
+            mainH1.innerHTML = `${firstName} <span class="destaque-nome">${lastName}</span>`;
+        }
+
+        const avatar = document.querySelector('.avatar-perfil-lateral');
+        if (avatar) {
+            avatar.textContent = p.nome.split(' ').filter(Boolean).map(n => n[0]).slice(0, 2).join('').toUpperCase();
+        }
+
+        const nameSidebar = document.querySelector('.nome-perfil-lateral');
+        if (nameSidebar) nameSidebar.textContent = p.nome;
+
+        const subSidebar = document.querySelector('.sub-perfil-lateral');
+        if (subSidebar) {
+            subSidebar.innerHTML = `${p.data_nasc} · ${calcularIdade(p.data_nasc)} anos<br>Paciente Ativo`;
+        }
+
+        const tagsSidebar = document.querySelector('.grupo-tags-perfil');
+        if (tagsSidebar) {
+            tagsSidebar.innerHTML = `
+                <span class="etiqueta-perfil-lateral etiqueta-objetivo">${p.objetivo}</span>
+                <span class="etiqueta-perfil-lateral">${p.sexo === 'F' ? 'Feminino' : p.sexo === 'M' ? 'Masculino' : p.sexo}</span>
+                <span class="etiqueta-perfil-lateral">${p.gravidez === 'Sim' ? 'Gestante' : 'Não gestante'}</span>
+            `;
+        }
+
+        const itemsLateral = document.querySelectorAll('.item-detalhe-lat, .item-detalhe-lateral');
+        if (itemsLateral.length >= 4) {
+            itemsLateral[0].innerHTML = `<strong>CPF</strong> ${p.cpf || '—'}`;
+            itemsLateral[1].innerHTML = `<strong>E-MAIL</strong> ${p.email || '—'}`;
+            itemsLateral[2].innerHTML = `<strong>TELEFONE</strong> ${p.telefone || '—'}`;
+            itemsLateral[3].innerHTML = `<strong>PROFISSÃO</strong> ${p.profissao || '—'}`;
+        }
+
+        const atualizarCampoAnamnese = (labelTexto, valorHtml) => {
+            const items = document.querySelectorAll('.dado-anamnese-item, .item-dado-anamnese');
+            for (let item of items) {
+                const label = item.querySelector('label');
+                if (label && label.textContent.trim().toLowerCase() === labelTexto.toLowerCase()) {
+                    const span = item.querySelector('span');
+                    if (span) {
+                        span.innerHTML = valorHtml;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        const formatarTagsAnamnese = (tagsList) => {
+            if (!tagsList || tagsList.length === 0 || (tagsList.length === 1 && tagsList[0] === '')) {
+                return '<span class="etiqueta-status-anamnese etiqueta-amarela">Não se aplica</span>';
+            }
+            return tagsList.map(t => `<span class="etiqueta-status-anamnese etiqueta-amarela">${t}</span>`).join(' ');
+        };
+
+        atualizarCampoAnamnese('Objetivo', p.objetivo);
+        atualizarCampoAnamnese('Metas', p.meta_1 || 'Acompanhamento nutricional');
+        atualizarCampoAnamnese('Peso', `${parseFloat(p.peso).toFixed(1).replace('.', ',')} kg`);
+        atualizarCampoAnamnese('Altura', `${p.altura} cm`);
+        atualizarCampoAnamnese('Sono', p.sono || 'Normal');
+        atualizarCampoAnamnese('Funcionamento Intestinal', p.intestino || 'Normal');
+        atualizarCampoAnamnese('Consumo de Água', p.consumo_agua || '2 L/dia');
+        atualizarCampoAnamnese('Consumo de Álcool', p.alcool || 'Não consome');
+        atualizarCampoAnamnese('Cintura', `${p.medida_cintura || 0} cm`);
+        atualizarCampoAnamnese('Método TMB', p.metodo_tmb || 'Harris-Benedict');
+
+        atualizarCampoAnamnese('TMB', `
+            ${p.kcal} kcal
+            <span class="etiqueta-inline etiqueta-inline-laranja">NORMAL</span>
+        `);
+
+        const imcNum = parseFloat(p.imc) || 22;
+        const imcStatus = imcNum < 18.5 ? 'BAIXO PESO' : imcNum < 25 ? 'SAUDÁVEL' : imcNum < 30 ? 'SOBREPESO' : 'OBESIDADE';
+        const imcClass = imcNum < 18.5 || imcNum >= 25 ? 'etiqueta-inline-laranja' : 'etiqueta-inline-verde';
+        const imcBarColor = imcNum < 18.5 || imcNum >= 25 ? 'cor-laranja' : 'cor-verde';
+        atualizarCampoAnamnese('IMC', `
+            ${imcNum.toFixed(1).replace('.', ',')}
+            <span class="etiqueta-inline ${imcClass}">${imcStatus}</span>
+            <div class="progresso-pequeno">
+                <div class="barra-progresso-pequeno ${imcBarColor} bar-imc" style="width: ${Math.min(100, Math.max(10, (imcNum / 40) * 100))}%;"></div>
+            </div>
+        `);
+
+        atualizarCampoAnamnese('Doenças', formatarTagsAnamnese(p.doencas));
+        atualizarCampoAnamnese('Medicamentos', formatarTagsAnamnese(p.medicamentos));
+        atualizarCampoAnamnese('Alergias', formatarTagsAnamnese(p.alergias));
+        atualizarCampoAnamnese('Intolerâncias', formatarTagsAnamnese(p.intolerancias));
+
+        const rcaVal = (p.medida_cintura && p.altura) ? (p.medida_cintura / p.altura).toFixed(2) : '0,38';
+        const rcaValNum = parseFloat(rcaVal.replace(',', '.'));
+        const rcaStatus = rcaValNum < 0.5 ? 'SAUDÁVEL' : 'ATENÇÃO';
+        const rcaClass = rcaStatus === 'SAUDÁVEL' ? 'etiqueta-inline-verde' : 'etiqueta-inline-laranja';
+        const rcaBarColor = rcaStatus === 'SAUDÁVEL' ? 'cor-verde' : 'cor-laranja';
+        const rcaProgressWidth = Math.min(100, Math.max(10, (rcaValNum / 1) * 100));
+
+        const rcaContainer = document.querySelector('.item-full-valor, .valor-largura-total');
+        if (rcaContainer) {
+            rcaContainer.innerHTML = `
+                <span>
+                    ${rcaVal.replace('.', ',')}
+                    <span class="etiqueta-inline ${rcaClass}">${rcaStatus}</span>
+                </span>
+                <div class="progresso-pequeno mt-1">
+                    <div class="barra-progresso-pequeno ${rcaBarColor} bar-rca" style="width: ${rcaProgressWidth}%;"></div>
+                </div>
+            `;
+        }
+
+        const peitoral = parseFloat(p.peitoral) || 0;
+        const axilar = parseFloat(p.axilar_media) || 0;
+        const triceps = parseFloat(p.triceps) || 0;
+        const subescapular = parseFloat(p.subescapular) || 0;
+        const abdomen = parseFloat(p.abdomen) || 0;
+        const suprailiaca = parseFloat(p.suprailiaca) || 0;
+        const coxa = parseFloat(p.coxa) || 0;
+        const soma = peitoral + axilar + triceps + subescapular + abdomen + suprailiaca + coxa;
+
+        let densidade = 1.0583;
+        let gordura = 17.7;
+        const idade = calcularIdade(p.data_nasc);
+        if (soma > 0) {
+            if (p.sexo === 'F') {
+                densidade = 1.0970 - 0.00046971 * soma + 0.00000056 * (soma * soma) - 0.00012828 * idade;
+            } else {
+                densidade = 1.1120 - 0.00043499 * soma + 0.00000055 * (soma * soma) - 0.00028826 * idade;
+            }
+            gordura = ((4.95 / densidade) - 4.50) * 100;
+        }
+
+        const gordStatus = gordura < 8 ? 'BAIXO' : gordura < 20 ? 'SAUDÁVEL' : gordura < 25 ? 'SOBREPESO' : 'ALTO';
+        const gordClass = gordStatus === 'SAUDÁVEL' ? 'etiqueta-inline-verde' : 'etiqueta-inline-laranja';
+        const gordBarColor = gordStatus === 'SAUDÁVEL' ? 'cor-verde' : 'cor-laranja';
+
+        atualizarCampoAnamnese('Peitoral', `${peitoral} mm`);
+        atualizarCampoAnamnese('Axilar Média', `${axilar} mm`);
+        atualizarCampoAnamnese('Tríceps', `${triceps} mm`);
+        atualizarCampoAnamnese('Subescapular', `${subescapular} mm`);
+        atualizarCampoAnamnese('Abdômen', `${abdomen} mm`);
+        atualizarCampoAnamnese('Suprailíaca', `${suprailiaca} mm`);
+        atualizarCampoAnamnese('Coxa', `${coxa} mm`);
+        atualizarCampoAnamnese('Soma das 7 Dobras', `${soma} mm`);
+        atualizarCampoAnamnese('Densidade Corporal', `${densidade.toFixed(4).replace('.', ',')} g/cm³`);
+        atualizarCampoAnamnese('Percentual de Gordura', `
+            ${gordura.toFixed(1).replace('.', ',')}%
+            <span class="etiqueta-inline ${gordClass}">${gordStatus}</span>
+            <div class="progresso-pequeno">
+                <div class="barra-progresso-pequeno ${gordBarColor} bar-gordura" style="width: ${Math.min(100, Math.max(10, (gordura / 45) * 100))}%;"></div>
+            </div>
+        `);
+
+
+        const atualizarNecessidades = (totaisConsumidos) => {
+            const kcalMeta = Math.round(p.kcal) || 1600;
+            const aguaMeta = (p.peso * 35 / 1000).toFixed(2) || '1.68';
+            
+            const protMeta = Math.round(p.peso * 2) || 80;
+            const lipMeta = Math.round(p.peso * 1) || 40;
+            const carbMeta = Math.round((kcalMeta - (protMeta * 4 + lipMeta * 9)) / 4) || 200;
+            const fibMeta = 28;
+
+            const kcalElement = document.querySelector('.etiqueta-meta-necessidade .valor-meta-nutricional');
+            if (kcalElement) kcalElement.textContent = kcalMeta.toLocaleString('pt-BR');
+
+            const aguaElement = document.querySelector('.etiqueta-meta-necessidade.meta-agua .valor-meta-nutricional');
+            if (aguaElement) aguaElement.textContent = aguaMeta.replace('.', ',');
+
+            const alertaAgua = document.querySelector('.alerta-necessidade-consumo');
+            if (alertaAgua) {
+                const aguaConsumoNum = parseFloat(p.consumo_agua) || 0.75;
+                if (aguaConsumoNum < parseFloat(aguaMeta)) {
+                    alertaAgua.innerHTML = `⚠️ O consumo atual relatado (${p.consumo_agua || '500 ml - 1 L/dia'}) está <strong>muito abaixo do recomendado (${aguaMeta.replace('.', ',')} L/dia)</strong>.`;
+                    alertaAgua.style.display = 'block';
+                } else {
+                    alertaAgua.style.display = 'none';
+                }
+            }
+
+            const fillProt = Math.min(100, Math.round((totaisConsumidos.prot / protMeta) * 100));
+            const fillCarb = Math.min(100, Math.round((totaisConsumidos.carb / carbMeta) * 100));
+            const fillLip = Math.min(100, Math.round((totaisConsumidos.lip / lipMeta) * 100));
+            const fillFib = Math.min(100, Math.round((totaisConsumidos.fib / fibMeta) * 100));
+
+            const setBarFill = (cls, pct) => {
+                const bar = document.querySelector('.' + cls);
+                if (bar) bar.style.width = pct + '%';
+            };
+            setBarFill('fill-prot', fillProt);
+            setBarFill('fill-carb', fillCarb);
+            setBarFill('fill-lip', fillLip);
+            setBarFill('fill-fib', fillFib);
+
+            const ranges = document.querySelectorAll('.intervalo-valor-macro');
+            if (ranges.length >= 4) {
+                ranges[0].innerHTML = `${Math.round(totaisConsumidos.prot)}g <span class="text-muted">/ ${protMeta}g</span>`;
+                ranges[1].innerHTML = `${Math.round(totaisConsumidos.carb)}g <span class="text-muted">/ ${carbMeta}g</span>`;
+                ranges[2].innerHTML = `${Math.round(totaisConsumidos.lip)}g <span class="text-muted">/ ${lipMeta}g</span>`;
+                ranges[3].innerHTML = `${Math.round(totaisConsumidos.fib)}g <span class="text-muted">/ ${fibMeta}g</span>`;
+            }
+        };
+
+        const carregarPlanoAlimentar = () => {
+            const container = document.getElementById('planoAlimentarContainer');
+            if (!container) return;
+
+            const planoSalvo = JSON.parse(localStorage.getItem('nutriplanner_plano_' + pNomeExcluir.toLowerCase()));
+            
+            const refeicoesNomes = ['☕ Café da manhã', '🥪 Lanche da manhã', '🍲 Almoço', '🥪 Lanche da tarde', '🥗 Jantar', '🥛 Ceia'];
+            const keyMap = ['cafe', 'lanche-m', 'almoco', 'lanche-t', 'jantar', 'ceia'];
+
+            let totais = { kcal: 0, prot: 0, carb: 0, lip: 0, fib: 0 };
+
+            if (planoSalvo) {
+                let html = '';
+                
+                refeicoesNomes.forEach((nomeRef, idx) => {
+                    const key = keyMap[idx];
+                    const itens = planoSalvo[key] || [];
+                    
+                    let kcalRef = 0;
+                    let rowsHtml = '';
+                    
+                    itens.forEach(it => {
+                        kcalRef += Math.round(it.kcal || 0);
+                        totais.kcal += it.kcal || 0;
+                        totais.prot += it.prot || 0;
+                        totais.carb += it.carb || 0;
+                        totais.lip += it.lip || 0;
+                        totais.fib += it.fib || 0;
+                        
+                        rowsHtml += `
+                            <tr>
+                                <td class="nome-alimento">${it.nome}</td>
+                                <td class="quantidade-alimento">${it.medida}</td>
+                                <td class="kcal-alimento">${Math.round(it.kcal || 0)} kcal</td>
+                                <td class="acao-remover-alimento"></td>
+                            </tr>
+                        `;
+                    });
+
+                    if (itens.length > 0) {
+                        html += `
+                            <div class="grupo-refeicao mb-3">
+                                <div class="cabecalho-refeicao">
+                                    <span class="titulo-refeicao">${nomeRef}</span>
+                                    <span class="kcal-total-refeicao">${kcalRef} kcal</span>
+                                </div>
+                                <div class="tabela-scroll">
+                                    <table class="table tabela-alimentos-adicionados">
+                                        <tbody>
+                                            ${rowsHtml}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="grupo-refeicao sem-itens mb-3">
+                                <div class="cabecalho-refeicao">
+                                    <span class="titulo-refeicao">${nomeRef}</span>
+                                    <span class="status-sem-itens">Sem alimentos</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                container.innerHTML = html;
+            } else if (pNomeExcluir.toLowerCase() === 'helena vieira') {
+                totais = { kcal: 1096, prot: 68, carb: 145, lip: 32, fib: 20 };
+            } else {
+                container.innerHTML = `
+                    <div class="text-center py-5 text-muted">
+                        <p class="mb-3">Nenhum plano alimentar criado para este paciente.</p>
+                        <a href="criarplano.html" class="btn btn-criar-plano-perfil">+ Criar Plano</a>
+                    </div>
+                `;
+            }
+
+            const kcalTotalCard = document.querySelector('.etiqueta-total-macro:not([class*="macro-prot"]):not([class*="macro-carb"]):not([class*="macro-lip"]):not([class*="macro-fib"]) .valor-macro');
+            if (kcalTotalCard) kcalTotalCard.textContent = `${Math.round(totais.kcal).toLocaleString('pt-BR')} kcal`;
+
+            const protTotalCard = document.querySelector('.etiqueta-total-macro.macro-prot .valor-macro');
+            if (protTotalCard) protTotalCard.textContent = `${Math.round(totais.prot)}g`;
+
+            const carbTotalCard = document.querySelector('.etiqueta-total-macro.macro-carb .valor-macro');
+            if (carbTotalCard) carbTotalCard.textContent = `${Math.round(totais.carb)}g`;
+
+            const lipTotalCard = document.querySelector('.etiqueta-total-macro.macro-lip .valor-macro');
+            if (lipTotalCard) lipTotalCard.textContent = `${Math.round(totais.lip)}g`;
+
+            const fibTotalCard = document.querySelector('.etiqueta-total-macro.macro-fib .valor-macro');
+            if (fibTotalCard) fibTotalCard.textContent = `${Math.round(totais.fib)}g`;
+
+            atualizarNecessidades(totais);
+        };
+
+        carregarPlanoAlimentar();
+
+        document.getElementById('btnExcluirPaciente').addEventListener('click', () => {
+            if (confirm(`⚠️ Tem certeza de que deseja excluir permanentemente o cadastro de ${p.nome}? Esta ação não pode ser desfeita.`)) {
+                let pacientes = JSON.parse(localStorage.getItem('nutriplanner_pacientes')) || [];
+                pacientes = pacientes.filter(item => item.nome.toLowerCase() !== p.nome.toLowerCase());
+                localStorage.setItem('nutriplanner_pacientes', JSON.stringify(pacientes));
+
+                localStorage.removeItem('nutriplanner_plano_' + p.nome.toLowerCase());
+
+                alert('Paciente excluído com sucesso!');
+                window.location.href = 'listapacientes.html';
+            }
+        });
+
+        document.getElementById('btnSalvarPdf').addEventListener('click', () => {
+            alert(`✓ PDF do plano alimentar de ${p.nome} gerado com sucesso!`);
+        });
+    </script>
+</body>
+
+</html>
