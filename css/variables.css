@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --cor-rosa:    #CD3987;
+    --cor-laranja: #F3680A;
+    --cor-amarelo: #F0B300;
+    --cor-verde:   #4A991E;
+    --cor-creme:   #FFE494;
+
+    --cor-rosa-hover:    #D62E78;
+    --cor-laranja-hover: #D85A09;
+    --cor-amarelo-hover: #D69E00;
+    --cor-verde-hover:   #3D7F18;
+
+    --texto-escuro:   #1A1A1A;
+    --texto-claro:    #FFFFFF;
+    --texto-mutado:   #5A5A5A;
+
+    --fundo-pagina:   #FFF3CE;
+    --fundo-creme:    var(--cor-creme);
+    --fundo-escuro:   #1E1E1E;
+
+    --cor-destaque-rosa:    var(--cor-rosa);
+    --cor-destaque-laranja: var(--cor-laranja);
+    --cor-numero-amarelo:   var(--cor-amarelo);
+    --cor-numero-laranja:   var(--cor-laranja);
+    --cor-numero-rosa:      var(--cor-rosa);
+    --cor-numero-verde:     var(--cor-verde);
+
+    --botao-primario:       var(--cor-laranja);
+    --botao-primario-hover: var(--cor-laranja-hover);
+    --botao-secundario:     var(--cor-rosa);
+    --botao-secundario-hover: var(--cor-rosa-hover);
+
+    --fonte-titulo: 'Inter', sans-serif;
+    --fonte-corpo:  'Inter', sans-serif;
+
+    --padding-secao: 6rem 3rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    color: var(--texto-escuro);
+    background-color: var(--fundo-creme);
+}

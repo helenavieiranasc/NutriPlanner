@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlanner - Selecionar paciente</title>
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/selecionarpaciente.css">
+</head>
+
+<body>
+
+    <div id="containersidebar"></div>
+
+    <main class="conteudo-dashboard">
+
+        <header class="cabecalho-dashboard">
+            <button class="botao-toggle-sidebar" id="toggleSidebar">☰</button>
+            <div class="bloco-boas-vindas">
+                <h1>Selecionar <span class="destaque-nome">paciente</span></h1>
+            </div>
+            <div class="acoes-cabecalho">
+                <a href="criarplano.html" class="botao-voltar">← Voltar</a>
+            </div>
+        </header>
+
+        <div class="barra-busca-selecionar mb-4">
+            <input type="text" id="buscaPacienteSel" placeholder="🔍 Buscar paciente por nome...">
+        </div>
+
+        <div class="lista-selecionar-pacientes" id="listaPacientesSel">
+        </div>
+
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+    <script>
+        if (!localStorage.getItem('nutriplanner_current_user')) {
+            window.location.href = 'index.html';
+        }
+        const PACIENTES_ESTATICOS = [
+            { nome: 'Helena Vieira', email: 'hv.nasc@gmail.com', objetivo: 'Manutenção' },
+            { nome: 'Maria Clara Pastor', email: 'maria@gmail.com', objetivo: 'Hipertrofia' },
+            { nome: 'Camila Ribeiro', email: 'camila@gmail.com', objetivo: 'Emagrecimento' }
+        ];
+
+        const carregarPacientes = () => {
+            const container = document.getElementById('listaPacientesSel');
+            if (!container) return;
+
+            const customPacientes = JSON.parse(localStorage.getItem('nutriplanner_pacientes')) || [];
+
+            const todosPacientes = [...PACIENTES_ESTATICOS];
+            customPacientes.forEach(cp => {
+                if (!todosPacientes.some(p => p.nome.toLowerCase() === cp.nome.toLowerCase())) {
+                    todosPacientes.push({
+                        nome: cp.nome,
+                        email: cp.email || 'sem-email@nutri.com',
+                        objetivo: cp.objetivo || 'Manutenção'
+                    });
+                }
+            });
+
+            container.innerHTML = '';
+
+            const avCores = ['avatar-hv', 'avatar-mc', 'avatar-cr', 'avatar-hv2', 'avatar-mc2', 'avatar-cr2'];
+
+            todosPacientes.forEach((p, index) => {
+                const avCor = avCores[index % avCores.length];
+
+                const iniciais = p.nome
+                    .split(' ')
+                    .filter(Boolean)
+                    .map(n => n[0])
+                    .slice(0, 2)
+                    .join('')
+                    .toUpperCase();
+
+                let objCls = 'etiqueta-manutencao';
+                if (p.objetivo.toLowerCase().includes('hipertrofia')) objCls = 'etiqueta-hipertrofia';
+                else if (p.objetivo.toLowerCase().includes('emagrecimento')) objCls = 'etiqueta-emagrecimento';
+
+                const itemHtml = `
+                <div class="item-selecionar-paciente">
+                    <div class="info-paciente-sel">
+                        <div class="avatar-sel ${avCor}">${iniciais}</div>
+                        <div class="dados-sel">
+                            <strong>${p.nome}</strong>
+                            <span>${p.email}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="etiqueta-objetivo ${objCls}">${p.objetivo}</span>
+                        <button class="btn btn-selecionar" data-nome="${p.nome}">Selecionar</button>
+                    </div>
+                </div>
+                `;
+                container.insertAdjacentHTML('beforeend', itemHtml);
+            });
+
+            document.querySelectorAll('.btn-selecionar').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const nome = this.dataset.nome;
+                    localStorage.setItem('nutriplanner_selected_patient_name', nome);
+                    window.location.href = 'criarplano.html';
+                });
+            });
+        };
+
+        carregarPacientes();
+
+        function removerAcentos(str) {
+            if (!str) return '';
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        document.getElementById('buscaPacienteSel').addEventListener('input', function () {
+            const termo = removerAcentos(this.value.trim());
+            document.querySelectorAll('.item-selecionar-paciente').forEach(item => {
+                const nomeRaw = item.querySelector('.dados-sel strong').textContent;
+                const nome = removerAcentos(nomeRaw);
+                item.style.display = nome.includes(termo) ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

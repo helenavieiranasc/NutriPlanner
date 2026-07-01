@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlanner – Base de Alimentos</title>
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base_alimentos.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/lista_pacientes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+
+    <div id="containersidebar"></div>
+
+    <main class="conteudo-dashboard">
+
+        <header class="cabecalho-dashboard">
+            <button class="botao-toggle-sidebar" id="toggleSidebar">☰</button>
+            <div class="bloco-boas-vindas">
+                <h1>Base de <span class="destaque-nome">alimentos</span></h1>
+                <p class="data-atual">Tabela TACO – valores por 100g</p>
+            </div>
+            <div class="acoes-cabecalho">
+                <button class="botao-novoalimento">+ Novo alimento</button>
+            </div>
+        </header>
+
+        <div class="barra-ferramentas-base">
+            <div class="buscador-container" style="margin-bottom:0;">
+                <input type="text" class="input-busca" placeholder="🔍 Buscar por nome..." id="campoBusca">
+            </div>
+            <div class="grupo-categorias" id="grupoCategorias">
+                <button class="botao-cat ativo" data-cat="Todos">Todos</button>
+            </div>
+            <button class="botao-ordem" id="btnOrdem">Ordem: Nome A–Z ↓</button>
+        </div>
+
+        <div class="conteudo-base">
+            <div class="coluna-principal">
+                <div class="container-tabela-base">
+                    <div class="titulo-tabela-base">Alimentos</div>
+                    <div class="tabela-scroll">
+                        <table class="tabela-alimentos">
+                            <thead>
+                                <tr>
+                                    <th>Alimento</th>
+                                    <th>Calorias</th>
+                                    <th>Proteína</th>
+                                    <th>Carboidrato</th>
+                                    <th>Lipídeos</th>
+                                    <th>Fibras</th>
+                                </tr>
+                            </thead>
+                            <tbody id="corpoTabela">
+                                <tr>
+                                    <td colspan="6" class="msg-vazia-base">Carregando alimentos...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="rodape-base">
+                        <span id="contadorBase"></span>
+                        <div class="paginacao-base" id="paginacaoBase"></div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="coluna-lateral" id="cardDetalhes" style="flex: 0 0 350px; background: #fff; border-radius: 14px; box-shadow: 0 4px 4px 0 rgba(0,0,0,.15); padding: 20px; align-self: flex-start;">
+                <div class="placeholder-detalhe">
+                    Selecione um alimento para ver os detalhes nutricionais.
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <script src="../js/dashboard.js"></script>
+    <script>
+        if (!localStorage.getItem('nutriplanner_current_user')) {
+            window.location.href = 'index.html';
+        }
+        let todosAlimentos = [];
+        let filtrados = [];
+        let categoriaAtiva = 'Todos';
+        let ordemAtual = 'az';
+        let paginaAtual = 1;
+        const POR_PAGINA = 15;
+        let alimentoSelecionado = null;
+
+        const CATEGORIAS = {
+            'Cereais e derivados': 'Cereais',
+            'Carnes e derivados': 'Carnes',
+            'Verduras, hortaliças e derivados': 'Hortaliças',
+            'Leguminosas e derivados': 'Leguminosas',
+            'Leite e derivados': 'Laticínios',
+            'Frutas e derivados': 'Frutas',
+            'Gorduras e óleos': 'Óleos',
+            'Pescados e frutos do mar': 'Pescados',
+            'Ovos e derivados': 'Ovos',
+            'Produtos açucarados': 'Açucarados',
+            'Bebidas (alcoólicas e não alcoólicas)': 'Bebidas',
+            'Nozes e sementes': 'Nozes',
+            'Alimentos preparados': 'Preparados',
+            'Outros alimentos industrializados': 'Industrializados',
+            'Miscelâneas': 'Miscelâneas',
+        };
+
+        function fmt(val) {
+            if (val === null || val === undefined) return null;
+            if (typeof val === 'number') return val;
+            const str = String(val).trim();
+            if (str === '' || str === '-') return null;
+            const n = parseFloat(str);
+            return isNaN(n) ? null : n;
+        }
+
+        function fmtMg(val) {
+            const n = fmt(val);
+            if (n === null) return '—';
+            return (n < 0.01 ? '<0,1' : n.toFixed(1)) + 'mg';
+        }
+
+        Papa.parse('../tabela_alimentos/taco_completo.csv', {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function (results) {
+                todosAlimentos = results.data.map(row => ({
+                    id: row['Número do Alimento'],
+                    categoria: row['Categoria do alimento']?.trim() || '',
+                    nome: row['Descrição dos alimentos']?.trim() || '',
+                    energia: fmt(row['Energia (kcal.)']),
+                    proteina: fmt(row['Proteína (g.)']),
+                    lipideo: fmt(row['Lipídeos (g.)']),
+                    carboidrato: fmt(row['Carboidrato (g.)']),
+                    fibra: fmt(row['Fibra.Alimentar (g.)']),
+                    calcio: fmt(row['Cálcio (mg.)']),
+                    ferro: fmt(row['Ferro (mg.)']),
+                    sodio: fmt(row['Sódio (mg.)']),
+                    potassio: fmt(row['Potássio (mg.)']),
+                    magnesio: fmt(row['Magnésio (mg.)']),
+                    vitA: fmt(row['RAE (mcg.)']),
+                    vitC: fmt(row['Vitamina.C (mg.)']),
+                })).filter(a => a.nome);
+                gerarBotoesCategorias();
+                aplicarFiltros();
+            },
+            error: function () {
+                document.getElementById('corpoTabela').innerHTML =
+                    `<tr><td colspan="6" class="msg-vazia-base">Erro ao carregar o CSV. Verifique se <strong>taco_completo.csv</strong> está na mesma pasta.</td></tr>`;
+            }
+        });
+
+        function gerarBotoesCategorias() {
+            const cats = [...new Set(todosAlimentos.map(a => a.categoria))].sort();
+            const grupo = document.getElementById('grupoCategorias');
+            cats.forEach(cat => {
+                const label = CATEGORIAS[cat] || cat;
+                const btn = document.createElement('button');
+                btn.className = 'botao-cat';
+                btn.dataset.cat = cat;
+                btn.textContent = label;
+                btn.addEventListener('click', () => setCategoria(btn));
+                grupo.appendChild(btn);
+            });
+        }
+
+        function setCategoria(btn) {
+            document.querySelectorAll('.botao-cat').forEach(b => b.classList.remove('ativo'));
+            btn.classList.add('ativo');
+            categoriaAtiva = btn.dataset.cat;
+            paginaAtual = 1;
+            aplicarFiltros();
+        }
+
+        document.getElementById('btnOrdem').addEventListener('click', function () {
+            ordemAtual = ordemAtual === 'az' ? 'za' : 'az';
+            this.textContent = ordemAtual === 'az' ? 'Ordem: Nome A–Z ↓' : 'Ordem: Nome Z–A ↑';
+            paginaAtual = 1;
+            aplicarFiltros();
+        });
+
+        function removerAcentos(str) {
+            if (!str) return '';
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        document.getElementById('campoBusca').addEventListener('input', () => {
+            paginaAtual = 1;
+            aplicarFiltros();
+        });
+
+        function aplicarFiltros() {
+            const busca = removerAcentos(document.getElementById('campoBusca').value.trim());
+            filtrados = todosAlimentos.filter(a => {
+                const matchCat = categoriaAtiva === 'Todos' || a.categoria === categoriaAtiva;
+                const matchNome = removerAcentos(a.nome).includes(busca);
+                return matchCat && matchNome;
+            });
+            filtrados.sort((a, b) =>
+                ordemAtual === 'az'
+                    ? a.nome.localeCompare(b.nome, 'pt')
+                    : b.nome.localeCompare(a.nome, 'pt')
+            );
+            renderTabela();
+        }
+
+        function renderTabela() {
+            const tbody = document.getElementById('corpoTabela');
+            const inicio = (paginaAtual - 1) * POR_PAGINA;
+            const pagina = filtrados.slice(inicio, inicio + POR_PAGINA);
+
+            if (filtrados.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="msg-vazia-base">Nenhum alimento encontrado.</td></tr>`;
+                document.getElementById('contadorBase').textContent = '';
+                document.getElementById('paginacaoBase').innerHTML = '';
+                return;
+            }
+
+            tbody.innerHTML = pagina.map((a, i) => {
+                const idx = inicio + i;
+                const sel = alimentoSelecionado && alimentoSelecionado.nome === a.nome ? 'selecionado' : '';
+                const cal = a.energia !== null ? a.energia : '—';
+                const prot = a.proteina !== null ? a.proteina.toFixed(1) + 'g' : '—';
+                const carb = a.carboidrato !== null ? a.carboidrato.toFixed(1) + 'g' : '—';
+                const lip = a.lipideo !== null ? a.lipideo.toFixed(1) + 'g' : '—';
+                const fib = a.fibra !== null ? a.fibra.toFixed(1) + 'g' : '—';
+                return `<tr class="${sel}" onclick="selecionarAlimento(${idx})">
+                <td class="nome-alimento-tabela">${a.nome}</td>
+                <td class="val-calorias">${cal}</td>
+                <td class="val-proteina">${prot}</td>
+                <td class="val-carbo">${carb}</td>
+                <td class="val-lipideo">${lip}</td>
+                <td class="val-fibra">${fib}</td>
+            </tr>`;
+            }).join('');
+
+            const fim = Math.min(inicio + POR_PAGINA, filtrados.length);
+            document.getElementById('contadorBase').textContent =
+                `${inicio + 1}–${fim} de ${filtrados.length} alimentos`;
+            renderPaginacao();
+        }
+
+        function renderPaginacao() {
+            const total = Math.ceil(filtrados.length / POR_PAGINA);
+            const el = document.getElementById('paginacaoBase');
+            el.innerHTML = '';
+
+            const prev = document.createElement('button');
+            prev.className = 'botao-pag';
+            prev.textContent = '‹';
+            prev.onclick = () => { if (paginaAtual > 1) { paginaAtual--; renderTabela(); } };
+            el.appendChild(prev);
+
+            const ini = Math.max(1, paginaAtual - 2);
+            const fim = Math.min(total, paginaAtual + 2);
+            for (let i = ini; i <= fim; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'botao-pag' + (i === paginaAtual ? ' ativo' : '');
+                btn.textContent = i;
+                btn.onclick = () => { paginaAtual = i; renderTabela(); };
+                el.appendChild(btn);
+            }
+
+            const next = document.createElement('button');
+            next.className = 'botao-pag';
+            next.textContent = '›';
+            next.onclick = () => { if (paginaAtual < total) { paginaAtual++; renderTabela(); } };
+            el.appendChild(next);
+        }
+
+        function selecionarAlimento(idx) {
+            alimentoSelecionado = filtrados[idx];
+
+            document.querySelectorAll('.tabela-alimentos tbody tr').forEach(tr => tr.classList.remove('selecionado'));
+            const rows = document.querySelectorAll('.tabela-alimentos tbody tr');
+            const localIdx = idx - (paginaAtual - 1) * POR_PAGINA;
+            if (rows[localIdx]) rows[localIdx].classList.add('selecionado');
+
+            const a = alimentoSelecionado;
+            const cal = a.energia !== null ? a.energia : '—';
+            const prot = a.proteina !== null ? a.proteina.toFixed(1) + 'g' : '—';
+            const carb = a.carboidrato !== null ? a.carboidrato.toFixed(1) + 'g' : '—';
+            const lip = a.lipideo !== null ? a.lipideo.toFixed(1) + 'g' : '—';
+            const fib = a.fibra !== null ? a.fibra.toFixed(1) + 'g' : '—';
+
+            document.getElementById('cardDetalhes').innerHTML = `
+            <div class="nome-detalhe">${a.nome}</div>
+            <div class="grade-macros">
+                <div class="macro-box box-calorias">
+                    <span class="macro-valor">${cal}</span>
+                    <span class="macro-label">kcal totais</span>
+                </div>
+                <div class="macro-box box-proteina">
+                    <span class="macro-valor">${prot}</span>
+                    <span class="macro-label">proteína</span>
+                </div>
+                <div class="macro-box box-carbo">
+                    <span class="macro-valor">${carb}</span>
+                    <span class="macro-label">carboidrato</span>
+                </div>
+                <div class="macro-box box-lipideo">
+                    <span class="macro-valor">${lip}</span>
+                    <span class="macro-label">lipídeos</span>
+                </div>
+            </div>
+            <div class="box-fibra-full">
+                <span class="macro-valor">${fib}</span>
+                <span class="macro-label">fibras</span>
+            </div>
+            <div class="secao-minerais">
+                <div class="titulo-secao-detalhe">Minerais</div>
+                ${mineralLinha('Cálcio', fmtMg(a.calcio))}
+                ${mineralLinha('Ferro', fmtMg(a.ferro))}
+                ${mineralLinha('Sódio', fmtMg(a.sodio))}
+                ${mineralLinha('Potássio', fmtMg(a.potassio))}
+                ${mineralLinha('Magnésio', fmtMg(a.magnesio))}
+            </div>
+            <div class="secao-vitaminas">
+                <div class="titulo-secao-detalhe">Vitaminas</div>
+                ${mineralLinha('Vitamina A (RAE)', a.vitA !== null ? a.vitA.toFixed(0) + 'mcg' : '—')}
+                ${mineralLinha('Vitamina C', fmtMg(a.vitC))}
+            </div>
+        `;
+        }
+
+        function mineralLinha(label, valor) {
+            return `<div class="linha-mineral">
+            <span>${label}</span>
+            <span class="val-mineral">${valor}</span>
+        </div>`;
+        }
+    </script>
+
+</body>
+
+</html>

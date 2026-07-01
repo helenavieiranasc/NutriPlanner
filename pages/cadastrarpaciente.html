@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlanner - Cadastrar paciente</title>
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/cadastros_pacientes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+
+    <div id="containersidebar"></div>
+
+    <main class="conteudo-dashboard">
+
+        <header class="d-flex align-items-center gap-3">
+            <button class="botao-toggle-sidebar" id="toggleSidebar">☰</button>
+            <h1 class="fw-bold fs-2 mb-0">Cadastrar <span class="destaque-nome">paciente</span></h1>
+            <a href="home.html" class="btn botao-voltar ms-auto">Voltar &rarr;</a>
+        </header>
+
+        <nav class="nav nav-pills indicador-etapas">
+            <span class="nav-link etapa concluida"><span class="numero-etapa">✓</span> Dados pessoais</span>
+            <span class="nav-link etapa atual"><span class="numero-etapa">2</span> Histórico de saúde</span>
+            <span class="nav-link etapa"><span class="numero-etapa">3</span> Antropometria</span>
+            <span class="nav-link etapa"><span class="numero-etapa">4</span> Hábitos e estilo de vida</span>
+            <span class="nav-link etapa"><span class="numero-etapa">5</span> Objetivo e metas</span>
+        </nav>
+
+        <form class="d-flex flex-column gap-4" id="formCadastroPaciente">
+
+            <div class="card cartao-formulario">
+                <div class="card-header">🪪 Dados pessoais</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">NOME <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nome" placeholder="Digite o nome do paciente"
+                                required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">DATA DE NASCIMENTO <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="data_nasc" placeholder="DD/MM/AAAA" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">PROFISSÃO <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="profissao"
+                                placeholder="Digite a profissão do paciente">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">SEXO <span class="text-danger">*</span></label>
+                            <select class="form-select" name="sexo">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="F">Feminino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="form-label">GESTANTE <span class="text-danger">*</span></label>
+                            <select class="form-select" name="gravidez">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">TELEFONE <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="telefone" placeholder="(XX) 9XXXX-XXXX">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">EMAIL <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email" placeholder="usuario@dominio.com">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">CPF <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="cpf" placeholder="111.111.111-11">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">ETNIA <span class="text-danger">*</span></label>
+                            <select class="form-select" name="etnia">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Branca</option>
+                                <option>Preta</option>
+                                <option>Amarela</option>
+                                <option>Parda</option>
+                                <option>Indígena</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-formulario">
+                <div class="card-header">⚠️ Histórico de saúde</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">DOENÇAS DIAGNOSTICADAS <span class="text-danger">*</span></label>
+                            <div class="campo-etiquetas" data-campo="doencas">
+                                <input type="text" placeholder="Digite e pressione Enter...">
+                            </div>
+                            <div class="form-text">Deixe em branco se não houver nenhuma doença diagnosticada</div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">MEDICAMENTOS CONTÍNUOS <span class="text-danger">*</span></label>
+                            <div class="campo-etiquetas" data-campo="medicamentos">
+                                <input type="text" placeholder="Digite e pressione Enter...">
+                            </div>
+                            <div class="form-text">Deixe em branco se não houver nenhum medicamento contínuo</div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">ALERGIAS ALIMENTARES <span class="text-danger">*</span></label>
+                            <div class="campo-etiquetas" data-campo="alergias">
+                                <input type="text" placeholder="Digite e pressione Enter...">
+                            </div>
+                            <div class="form-text">Deixe em branco se não houver nenhuma alergia alimentar</div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">INTOLERÂNCIAS <span class="text-danger">*</span></label>
+                            <div class="campo-etiquetas" data-campo="intolerancias">
+                                <input type="text" placeholder="Digite e pressione Enter...">
+                            </div>
+                            <div class="form-text">Deixe em branco se não houver nenhuma intolerância</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-formulario">
+                <div class="card-header">📏 Antropometria</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">PESO (KG) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="peso" placeholder="Ex: 68.5">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">ALTURA (CM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="altura" placeholder="Ex: 165">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">CIRC. DA CINTURA (CM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="medida_cintura" placeholder="Ex: 72">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">MÉTODO DE CÁLCULO TMB <span class="text-danger">*</span></label>
+                            <select class="form-select" name="metodo_tmb">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Harris-Benedict (padrão geral)</option>
+                                <option>Mifflin-St Jeor (pacientes com sobrepeso/obesidade)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-formulario">
+                <div class="card-header">📐 Avaliação de dobras cutâneas</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">PEITORAL (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="peitoral" placeholder="Ex: 6">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">AXILAR MÉDIA (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="axilar_media" placeholder="Ex: 10">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">TRÍCEPS (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="triceps" placeholder="Ex: 7">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">SUBESCAPULAR (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="subescapular" placeholder="Ex: 8">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">ABDÔMEN (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="abdomen" placeholder="Ex: 10">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">SUPRAILÍACA (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="suprailiaca" placeholder="Ex: 7">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">COXA (MM) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="coxa" placeholder="Ex: 8">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-formulario">
+                <div class="card-header">🏃 Hábitos e estilo de vida</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">FREQUÊNCIA INTESTINAL <span class="text-danger">*</span></label>
+                            <select class="form-select" name="intestino">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>1x ao dia (normal)</option>
+                                <option>2x ao dia</option>
+                                <option>A cada 2 dias</option>
+                                <option>A cada 3 dias</option>
+                                <option>A cada 4–5 dias</option>
+                                <option>Menos de 1x por semana</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">QUALIDADE DO SONO <span class="text-danger">*</span></label>
+                            <select class="form-select" name="sono">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Excelente (sono reparador)</option>
+                                <option>Bom (dorme bem na maioria dos dias)</option>
+                                <option>Regular (acorda algumas vezes, sono leve)</option>
+                                <option>Ruim (dificuldade para dormir ou manter o sono)</option>
+                                <option>Insônia (demora para dormir ou acorda muitas vezes)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">NÍVEL DE ATIVIDADE FÍSICA <span class="text-danger">*</span></label>
+                            <select class="form-select" name="atividade_fisica">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Sedentário (não pratica exercícios)</option>
+                                <option>Leve (1–2x por semana)</option>
+                                <option>Moderado (3–4x por semana)</option>
+                                <option>Intenso (5–6x por semana)</option>
+                                <option>Atleta/treino diário</option>
+                                <option>Trabalho fisicamente ativo (ex.: estoquista, operário)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">CONSUMO DIÁRIO DE ÁGUA <span class="text-danger">*</span></label>
+                            <select class="form-select" name="consumo_agua">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Menos de 500 ml/dia</option>
+                                <option>Entre 500 ml e 1 L/dia</option>
+                                <option>Entre 1 L e 1,5 L/dia</option>
+                                <option>Entre 1,5 L e 2 L/dia</option>
+                                <option>Entre 2 L e 3 L/dia</option>
+                                <option>Mais de 3 L/dia</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">FREQUÊNCIA DE CONSUMO DE ÁLCOOL <span class="text-danger">*</span></label>
+                            <select class="form-select" name="alcool">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Não consome</option>
+                                <option>Raramente (1x/mês ou menos)</option>
+                                <option>Socialmente (2–4x/mês)</option>
+                                <option>1x por semana</option>
+                                <option>2–3x por semana</option>
+                                <option>4–5x por semana</option>
+                                <option>Diariamente</option>
+                                <option>Ex-consumidor</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card cartao-formulario">
+                <div class="card-header">🎯 Objetivos e metas</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">OBJETIVO PRINCIPAL <span class="text-danger">*</span></label>
+                            <select class="form-select" name="objetivo" required>
+                                <option value="" selected disabled>Selecione...</option>
+                                <option>Emagrecimento</option>
+                                <option>Manutenção</option>
+                                <option>Hipertrofia (ganho de massa)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">META 1 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="meta_1"
+                                placeholder="Ex: Acompanhamento alimentar" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">META 2</label>
+                            <input type="text" class="form-control" name="meta_2" placeholder="Opcional">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">META 3</label>
+                            <input type="text" class="form-control" name="meta_3" placeholder="Opcional">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">OBSERVAÇÕES ADICIONAIS</label>
+                            <textarea class="form-control" name="observacoes" rows="3"
+                                placeholder="Informações julgadas relevantes para o perfil do paciente"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="botao-salvar-paciente">✓ Salvar Paciente</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+
+    <script>
+        
+        function initTags() {
+            document.querySelectorAll('.campo-etiquetas').forEach(campo => {
+                const input = campo.querySelector('input');
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const valor = input.value.trim();
+                        if (!valor) return;
+                        const tag = document.createElement('span');
+                        tag.className = 'etiqueta-removivel';
+                        tag.innerHTML = `${valor} <button type="button" class="botao-remover-etiqueta">×</button>`;
+                        tag.querySelector('.botao-remover-etiqueta').addEventListener('click', () => tag.remove());
+                        campo.insertBefore(tag, input);
+                        input.value = '';
+                    }
+                });
+            });
+        }
+
+        
+        initTags();
+
+        
+        document.getElementById('formCadastroPaciente').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            
+            const getTagsFromField = (campoName) => {
+                const tags = [];
+                document.querySelectorAll(`.campo-etiquetas[data-campo="${campoName}"] .etiqueta-removivel`).forEach(tag => {
+                    const text = tag.textContent.replace('×', '').trim();
+                    tags.push(text);
+                });
+                return tags;
+            };
+
+            const peso = parseFloat(formData.get('peso')) || 0;
+            const altura = parseFloat(formData.get('altura')) || 0;
+            
+            
+            let imc = '—';
+            if (peso > 0 && altura > 0) {
+                const alturaMetros = altura / 100;
+                imc = (peso / (alturaMetros * alturaMetros)).toFixed(1);
+            }
+
+            
+            let kcal = 1600;
+            if (peso > 0) {
+                const sexo = formData.get('sexo') || 'F';
+                if (sexo === 'F') {
+                    kcal = Math.round(10 * peso + 6.25 * (altura || 160) - 150);
+                } else {
+                    kcal = Math.round(10 * peso + 6.25 * (altura || 175) + 5);
+                }
+            }
+
+            const novoPaciente = {
+                id: 'paciente-' + Date.now(),
+                nome: formData.get('nome').trim(),
+                data_nasc: formData.get('data_nasc').trim(),
+                profissao: formData.get('profissao') || '',
+                sexo: formData.get('sexo') || '',
+                gravidez: formData.get('gravidez') || '',
+                telefone: formData.get('telefone') || '',
+                email: formData.get('email') || '',
+                cpf: formData.get('cpf') || '',
+                etnia: formData.get('etnia') || '',
+                doencas: getTagsFromField('doencas'),
+                medicamentos: getTagsFromField('medicamentos'),
+                alergias: getTagsFromField('alergias'),
+                intolerancias: getTagsFromField('intolerancias'),
+                peso: peso,
+                altura: altura,
+                medida_cintura: parseFloat(formData.get('medida_cintura')) || 0,
+                metodo_tmb: formData.get('metodo_tmb') || '',
+                peitoral: parseFloat(formData.get('peitoral')) || 0,
+                axilar_media: parseFloat(formData.get('axilar_media')) || 0,
+                triceps: parseFloat(formData.get('triceps')) || 0,
+                subescapular: parseFloat(formData.get('subescapular')) || 0,
+                abdomen: parseFloat(formData.get('abdomen')) || 0,
+                suprailiaca: parseFloat(formData.get('suprailiaca')) || 0,
+                coxa: parseFloat(formData.get('coxa')) || 0,
+                percentual_gordura: '',
+                intestino: formData.get('intestino') || '',
+                sono: formData.get('sono') || '',
+                atividade_fisica: formData.get('atividade_fisica') || '',
+                consumo_agua: formData.get('consumo_agua') || '',
+                alcool: formData.get('alcool') || '',
+                objetivo: formData.get('objetivo') || 'Manutenção',
+                meta_1: formData.get('meta_1').trim(),
+                meta_2: formData.get('meta_2') || '',
+                meta_3: formData.get('meta_3') || '',
+                observacoes: formData.get('observacoes') || '',
+                imc: imc,
+                kcal: kcal,
+                data_cadastro: new Date().toLocaleDateString('pt-BR')
+            };
+
+            
+            const pacientes = JSON.parse(localStorage.getItem('nutriplanner_pacientes')) || [];
+            pacientes.push(novoPaciente);
+            localStorage.setItem('nutriplanner_pacientes', JSON.stringify(pacientes));
+
+            alert('Paciente cadastrado com sucesso!');
+            window.location.href = 'listapacientes.html';
+        });
+
+        
+        const etapas = document.querySelectorAll('.indicador-etapas .etapa');
+        const cards = document.querySelectorAll('.cartao-formulario');
+        const steps = [
+            [cards[0]], 
+            [cards[1]], 
+            [cards[2], cards[3]], 
+            [cards[4]], 
+            [cards[5]]  
+        ];
+
+        const showStep = (stepIndex) => {
+            steps.forEach((stepCards, idx) => {
+                const show = idx === stepIndex;
+                stepCards.forEach(card => {
+                    if (card) card.style.display = show ? 'flex' : 'none';
+                });
+            });
+
+            etapas.forEach((etapa, idx) => {
+                etapa.className = 'nav-link etapa';
+                const badge = etapa.querySelector('.numero-etapa');
+                if (idx < stepIndex) {
+                    etapa.classList.add('concluida');
+                    if (badge) badge.textContent = '✓';
+                } else if (idx === stepIndex) {
+                    etapa.classList.add('atual');
+                    if (badge) badge.textContent = String(idx + 1);
+                } else {
+                    if (badge) badge.textContent = String(idx + 1);
+                }
+            });
+
+            
+            const saveBtnContainer = document.querySelector('.botao-salvar-paciente').parentNode;
+            if (saveBtnContainer) {
+                saveBtnContainer.style.display = (stepIndex === 4) ? 'flex' : 'none';
+            }
+        };
+
+        etapas.forEach((etapa, idx) => {
+            etapa.style.cursor = 'pointer';
+            etapa.addEventListener('click', () => showStep(idx));
+        });
+
+        
+        showStep(0);
+    </script>
+</body>
+</html>
