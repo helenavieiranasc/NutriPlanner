@@ -59,7 +59,7 @@ function initDashboard() {
                         e.preventDefault();
                         if (confirm('Deseja sair do sistema?')) {
                             localStorage.removeItem('nutriplanner_current_user');
-                            window.location.href = 'index.html';
+                            window.location.href = '../index.html';
                         }
                     });
                 }
