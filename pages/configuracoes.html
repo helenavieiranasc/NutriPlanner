@@ -174,7 +174,7 @@
         const getCurrentUser = () => {
             const userStr = localStorage.getItem('nutriplanner_current_user');
             if (!userStr) {
-                window.location.href = 'index.html';
+                window.location.href = '../index.html';
                 return null;
             }
             return JSON.parse(userStr);
@@ -319,7 +319,7 @@
             }
             localStorage.removeItem('nutriplanner_current_user');
             modalConta.hide();
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         });
     </script>
 </body>
