@@ -173,5 +173,5 @@ Para entender os requisitos, diagramas e a arquitetura de software utilizada no 
 ## 👥 Equipe
 
 - [Helena Vieira](https://github.com/helenavieiranasc)
-- [Camila Ribeiro](https://github.com/camilaribeirox)
+- [Camila Ribeiro](https://github.com/camilaribeirox) xxxxxx
 - [Maria Clara Pastor](https://github.com/mariaclarapastorsilva)
